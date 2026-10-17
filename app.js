@@ -4,7 +4,8 @@ const errorEl = document.querySelector("#error");
 const resultEl = document.querySelector("#result");
 const yourNameEl = document.querySelector("#your-name");
 const drewNameEl = document.querySelector("#drew-name");
-const submitBtn = form.querySelector("button");
+const submitBtn = form.querySelector("button[type='submit']");
+const resetBtn = document.querySelector("#reset-btn");
 
 function normalizeCode(value) {
   return value.trim().toUpperCase().replace(/\s+/g, "");
@@ -52,4 +53,12 @@ form.addEventListener("submit", async (event) => {
   } finally {
     submitBtn.disabled = false;
   }
+});
+
+resetBtn.addEventListener("click", () => {
+  hideMessages();
+  yourNameEl.textContent = "";
+  drewNameEl.textContent = "";
+  form.reset();
+  codeInput.focus();
 });

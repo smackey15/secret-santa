@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Secret Santa</title>
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -13,6 +14,7 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
+    <div class="snow" aria-hidden="true"></div>
     <main class="card">
       <p class="eyebrow">Mackey Family Secret Santa 2026</p>
       <h1>Who did you get?</h1>
@@ -38,6 +40,14 @@
         <p class="result-kicker"><span id="your-name"></span>, you’re shopping for</p>
         <p id="drew-name" class="drew-name"></p>
         <p class="hint">Keep it a secret — no group-chat screenshots.</p>
+        <p class="wishlist">
+          <a
+            href="https://docs.google.com/document/d/1L31rTev2R2oJKvr2Z41HXUZQF-ochukpsXsPqlyRBK0/edit?tab=t.b1cwk5ttsc0l"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Click here to see the family gift wish list</a>
+        </p>
+        <button type="button" id="reset-btn">Start over</button>
       </section>
     </main>
     <p class="photo-credit">

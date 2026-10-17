@@ -26,11 +26,81 @@ body {
 }
 
 .card {
+  position: relative;
+  z-index: 1;
   width: min(28rem, 100%);
   background: var(--card);
   border-radius: 20px;
   padding: 2rem 1.75rem 1.75rem;
   box-shadow: 0 24px 50px rgba(0, 0, 0, 0.28);
+}
+
+.snow {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.snow::before,
+.snow::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-repeat: repeat;
+}
+
+.snow::before {
+  opacity: 0.95;
+  background-image:
+    radial-gradient(6px 6px at 20px 30px, rgba(255, 255, 255, 0.95) 50%, transparent 51%),
+    radial-gradient(5px 5px at 80px 120px, rgba(255, 255, 255, 0.85) 50%, transparent 51%),
+    radial-gradient(4px 4px at 160px 40px, rgba(255, 255, 255, 0.9) 50%, transparent 51%),
+    radial-gradient(5px 5px at 240px 200px, rgba(255, 255, 255, 0.8) 50%, transparent 51%),
+    radial-gradient(4px 4px at 310px 80px, rgba(255, 255, 255, 0.9) 50%, transparent 51%),
+    radial-gradient(6px 6px at 50px 250px, rgba(255, 255, 255, 0.85) 50%, transparent 51%),
+    radial-gradient(4px 4px at 180px 300px, rgba(255, 255, 255, 0.8) 50%, transparent 51%),
+    radial-gradient(5px 5px at 350px 270px, rgba(255, 255, 255, 0.95) 50%, transparent 51%),
+    radial-gradient(4px 4px at 90px 360px, rgba(255, 255, 255, 0.75) 50%, transparent 51%),
+    radial-gradient(5px 5px at 270px 340px, rgba(255, 255, 255, 0.85) 50%, transparent 51%);
+  background-size: 400px 400px;
+  animation: snow-fall-slow 18s linear infinite;
+}
+
+.snow::after {
+  opacity: 0.85;
+  background-image:
+    radial-gradient(4px 4px at 30px 60px, rgba(255, 255, 255, 0.95) 50%, transparent 51%),
+    radial-gradient(3px 3px at 110px 20px, rgba(255, 255, 255, 0.85) 50%, transparent 51%),
+    radial-gradient(5px 5px at 170px 140px, rgba(255, 255, 255, 0.8) 50%, transparent 51%),
+    radial-gradient(3px 3px at 40px 180px, rgba(255, 255, 255, 0.9) 50%, transparent 51%),
+    radial-gradient(4px 4px at 210px 90px, rgba(255, 255, 255, 0.8) 50%, transparent 51%),
+    radial-gradient(3px 3px at 90px 220px, rgba(255, 255, 255, 0.85) 50%, transparent 51%),
+    radial-gradient(5px 5px at 200px 230px, rgba(255, 255, 255, 0.95) 50%, transparent 51%),
+    radial-gradient(3px 3px at 60px 10px, rgba(255, 255, 255, 0.75) 50%, transparent 51%);
+  background-size: 240px 240px;
+  animation: snow-fall-fast 11s linear infinite;
+}
+
+@keyframes snow-fall-slow {
+  to {
+    background-position: 40px 400px;
+  }
+}
+
+@keyframes snow-fall-fast {
+  to {
+    background-position: 25px 240px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .snow::before,
+  .snow::after {
+    animation: none;
+    opacity: 0.35;
+  }
 }
 
 .eyebrow {
@@ -141,8 +211,37 @@ button:disabled {
   font-size: 0.92rem;
 }
 
+.wishlist {
+  margin: 0.85rem 0 0;
+  font-size: 0.95rem;
+}
+
+.wishlist a {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.wishlist a:hover,
+.wishlist a:focus-visible {
+  color: var(--accent-dark);
+}
+
+.result button {
+  margin-top: 1rem;
+  background: transparent;
+  color: var(--muted);
+  box-shadow: none;
+}
+
+.result button:hover,
+.result button:focus-visible {
+  background: transparent;
+  color: var(--ink);
+}
+
 .photo-credit {
   position: fixed;
+  z-index: 1;
   right: 16px;
   bottom: 12px;
   margin: 0;
